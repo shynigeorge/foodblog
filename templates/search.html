@@ -1,0 +1,83 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>EShopper - Bootstrap Shop Template</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="Free HTML Templates" name="keywords">
+    <meta content="Free HTML Templates" name="description">
+
+    <!-- Favicon -->
+    <link href="{% static 'home/img/favicon.ico'%}" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="{% static 'home/lib/owlcarousel/assets/owl.carousel.min.css'%}" rel="stylesheet">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="{% static 'home/css/style.css'%}" rel="stylesheet">
+</head>
+
+<body>
+<div class="container-fluid pt-5">
+
+        <div class="row px-xl-5 pb-3">
+{% for i in pr %}
+            <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
+
+                <div class="card product-item border-0 mb-4">
+
+                    <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
+                       <a href="{{i.get_url}}"> <img class="img-fluid w-100" src="{{i.img.url}}" alt=""></a>
+                    </div>
+                    <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
+                        <h6 class="text-truncate mb-3">{{i.name}}</h6>
+                        <p>{{i.desc|truncatewords:5}}</p>
+                         <p>Stock item  {{i.stock}}</p>
+                        <div class="d-flex justify-content-center">
+                            <h6>${{i.price}}</h6><h6 class="text-muted ml-2"></h6>
+                        </div>
+                    </div>
+                    <div class="card-footer d-flex justify-content-between bg-light border">
+                        <a href="" class="btn btn-sm text-dark p-0"><i class="fas fa-eye text-primary mr-1"></i>View Detail</a>
+                        <a href="" class="btn btn-sm text-dark p-0"><i class="fas fa-shopping-cart text-primary mr-1"></i>Add To Cart</a>
+                    </div>
+                </div>
+
+            </div>
+{% endfor %}
+        </div>
+
+    </div>
+    <!-- Products End -->
+<!-- Back to Top -->
+    <a href="#" class="btn btn-primary back-to-top"><i class="fa fa-angle-double-up"></i></a>
+
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+    <script src="{% static 'home/lib/easing/easing.min.js'%}"></script>
+    <script src="{% static 'home/lib/owlcarousel/owl.carousel.min.js'%}"></script>
+
+    <!-- Contact Javascript File -->
+    <script src="{% static 'home/mail/jqBootstrapValidation.min.js'%}"></script>
+    <script src="{% static 'home/mail/contact.js'%}"></script>
+
+    <!-- Template Javascript -->
+    <script src="{% static 'home/js/main.js'%}"></script>
+</body>
+
+</html>
+{% endblock %}
